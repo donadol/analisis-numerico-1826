@@ -33,18 +33,18 @@ if eqn(xl)*eqn(xh)<0
             end
         end
     end
+    figure('units','normalized','outerposition',[0 0 1 1]);
+    fplot(eqn);
+    grid
+    xlabel('x','FontSize',14);
+    ylabel('y','FontSize',14);
+    title('Ecuación','FontSize',18);
+    ax=gca;
+    ax.XAxisLocation='origin';
+    ax.YAxisLocation='origin';
+    ax.Children.Color=[1 0 1];
+    ax.Children.LineWidth=2;
+    answer
 else
     disp('Los límites deben ser de signo contrario');
 end
-figure('units','normalized','outerposition',[0 0 1 1]);
-fplot(eqn);
-grid
-xlabel('x','FontSize',14);
-ylabel('y','FontSize',14);
-title('Ecuación','FontSize',18);
-ax=gca;
-ax.XAxisLocation='origin';
-ax.YAxisLocation='origin';
-ax.Children.Color=[1 0 1];
-ax.Children.LineWidth=2;
-answer
