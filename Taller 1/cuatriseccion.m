@@ -1,13 +1,8 @@
-%Para la publicación del documento se utilizaron los siguientes datos:
-eqnstr='667.38/x*(1-exp(-0.146843*x))-40';
-xlstr='-1';
-xhstr='16';
 syms x;
-%Para un uso general se descomentan las siguientes líneas
-%eqnstr=input('Ingrese su función: ','s');
+eqnstr=input('Ingrese su función: ','s');
 eqn(x)=str2sym(eqnstr);
-%xlstr=input('Ingrese el límite menor para la cuatrisección: ','s');
-%xhstr=input('Ingrese el límite superior para la cuatrisección: ','s');
+xlstr=input('Ingrese el límite menor para la cuatrisección: ','s');
+xhstr=input('Ingrese el límite superior para la cuatrisección: ','s');
 xl=str2double(xlstr);
 xh=str2double(xhstr);
 found=false;
