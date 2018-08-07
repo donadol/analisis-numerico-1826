@@ -63,4 +63,5 @@ int main() {
   cout<<"Resultado por metodo de Horner: "<<horner(p,n,x,o)<<" con "  <<o<<" operaciones"<<endl;
   o=0;
   cout<<"Resultado evaluacion normal: "<<eval(p,n,x,o)<<" con "  <<o<<" operaciones"<<endl;
+  return 0;
 }
