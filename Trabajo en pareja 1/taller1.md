@@ -2,7 +2,7 @@
 ## Presentado por: Jhonny Parra y Laura Donado
 
 ### Lista de Contenidos
-1. [Punto 1](https://github.com/donadol/analisis_numerico_1826/blob/master/Trabajo%20en%20pareja%201/taller1.md#punto-1-punto-1)
+1. [Punto 1](#punto-1)
 2. [Punto 2](#punto-2)
 3. [Punto 5](#punto-5)
 4. [Punto 6](#punto-6)
