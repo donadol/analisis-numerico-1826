@@ -211,7 +211,7 @@ Para elegir la ecuación a utilizar se derivan y se ve si cumple la condición d
 (4)  ![ecuacion](http://latex.codecogs.com/gif.latex?%5Cfrac%7Bd%20g_%7B1%7D%28x%29%7D%7Bdx%7D%3D%5Cfrac%7B5%7D%7B5x-1%7D)  
 Donde (3) corresponde a la derivada de (1), y (3) de (2).  
 Al evaluarlas en x=0.5, se obtuvo:  
-![ecuacion](http://latex.codecogs.com/gif.latex?g_%7B0%7D%280.5%29%3D0.3297%2C%20g_%7B1%7D%280.5%29%3D3.3333)  
+![ecuacion](http://latex.codecogs.com/gif.latex?%5Cfrac%7Bdg_%7B0%7D%28x%29%7D%7Bdx%7D%3D0.3297%2C%20%5Cfrac%7Bdg_%7B1%7D%28x%29%7D%7Bdx%7D%3D3.3333)  
 Como se observa, la única que cumple la condición de convergencia es ![ecuacion](http://latex.codecogs.com/gif.latex?g_%7B0%7D%28x%29), por lo cual es la escogida para resolver la ecuación.  
 d) Para la solución se utilizó el siguiente código:
 ``` python
