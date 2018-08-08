@@ -2,14 +2,14 @@
 ## Presentado por: Jhonny Parra y Laura Donado
 
 ### Lista de Contenidos
-1. ![Punto 1](#user-content-punto-1)
-2. ![Punto 2](#punto-2)
-3. ![Punto 5](#punto-5)
-4. ![Punto 6](#punto-6)
-5. ![Punto 7](#punto-7)
-6. ![Punto 11](#punto-11)
-7. ![Punto 13](#punto-13)
-8. ![Punto 15](#punto-15)
+1. [Punto 1](https://github.com/donadol/analisis_numerico_1826/blob/master/Trabajo%20en%20pareja%201/taller1.md#punto-1-punto-1)
+2. [Punto 2](#punto-2)
+3. [Punto 5](#punto-5)
+4. [Punto 6](#punto-6)
+5. [Punto 7](#punto-7)
+6. [Punto 11](#punto-11)
+7. [Punto 13](#punto-13)
+8. [Punto 15](#punto-15)
 
 ### Punto 1
 **Descripción del problema:** Evaluar el polinomio en cada valor indicado y el número de operaciones mínimo para hacerlo, para el siguiente polinomio junto con su derivada.  
