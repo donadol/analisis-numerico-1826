@@ -321,10 +321,15 @@ Ciertamente los métodos numéricos ya han sido pensados e implementados, lo ún
 
 
 Conocimientos básicos de ecuaciones y de geometría como el volumen de una caja rectangular.
+
 3. En el ejemplo de la caja ¿Cual sería la desventaja de intentar obtener experimentalmente la solución mediante prueba y error en lugar de analizar el modelo matemático?
+
+
 Podría tomar mucho tiempo, más aún si se tiene en cuenta que hay tres soluciones disponibles. Por otra parte conseguir una presición adecuada en la solución a través de prueba y error sería tedioso y tardio.
 
 4. ¿Qué es más critico: el error de truncamiento o el error de redondeo?
+
+Cuando se redondea se trata de tener en cuenta una mayor cantidad de decimales aún sin colocarlos todos, por lo que cuando se trunca un número el error es mayor,de hecho el error de truncamiento puede ser hasta el doble del error máximo que se puede llegar a obtener redondeando.
 
 5. ¿Cuál es la ventaja de instrumentar computacionalmente un método numérico?
 
@@ -334,7 +339,7 @@ Es mucho más eficiente que la computadora realice las operaciones de un método
 6. ¿Por qué es importante validar los resultados obtenidos?
 
 
-	Porque en muchas ocasiones a pesar de que el método de análisis numérico utilizado converge, la solución puede que no aplique para resolver el problema.
+Porque en muchas ocasiones a pesar de que el método de análisis numérico utilizado converge, la solución puede que no aplique para resolver el problema.
 
 
 ### Punto 5
