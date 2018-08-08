@@ -2,7 +2,7 @@
 ## Presentado por: Jhonny Parra y Laura Donado
 
 ### Lista de Contenidos
-1. ![Punto 1](#punto-1)
+1. ![Punto 1](#user-content-punto-1)
 2. ![Punto 2](#punto-2)
 3. ![Punto 5](#punto-5)
 4. ![Punto 6](#punto-6)
@@ -11,7 +11,7 @@
 7. ![Punto 13](#punto-13)
 8. ![Punto 15](#punto-15)
 
-### Punto 1 {#punto-1}
+### Punto 1
 **Descripción del problema:** Evaluar el polinomio en cada valor indicado y el número de operaciones mínimo para hacerlo, para el siguiente polinomio junto con su derivada.  
 ![ecuacion](http://latex.codecogs.com/gif.latex?P%28x%29%20%3D%207x%5E5%20&plus;%206x%5E4%20-%206x%5E3%20&plus;%203x%20-4%2C%20x_%7B0%7D%20%3D%203)  
 **Planteamiento del problema:** Para hallar la solución se utilizó el siguiente código, el cual esta basado en el propuesto en el taller añadiendo el cálculo del número de operaciónes mínimas realizadas. Para dicho cálculo, se tiene en cuenta que una división es un amultiplicación, una multiplicación son varias sumas y una suma es una operación.  
