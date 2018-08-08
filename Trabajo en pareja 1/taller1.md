@@ -2,16 +2,16 @@
 ## Presentado por: Jhonny Parra y Laura Donado
 
 ### Lista de Contenidos
-1. [Punto 1] (#idpunto1)
-2. Punto 2
-3. Punto 5
-4. Punto 6
-5. Punto 7
-6. Punto 11
-7. Punto 13
-8. Punto 15
+1. ![Punto 1](#punto-1)
+2. ![Punto 2](#punto-2)
+3. ![Punto 5](#punto-5)
+4. ![Punto 6](#punto-6)
+5. ![Punto 7](#punto-7)
+6. ![Punto 11](#punto-11)
+7. ![Punto 13](#punto-13)
+8. ![Punto 15](#punto-15)
 
-### Punto número 1 {#idpunto1}
+### Punto 1 {#punto-1}
 **Descripción del problema:** Evaluar el polinomio en cada valor indicado y el número de operaciones mínimo para hacerlo, para el siguiente polinomio junto con su derivada.  
 ![ecuacion](http://latex.codecogs.com/gif.latex?P%28x%29%20%3D%207x%5E5%20&plus;%206x%5E4%20-%206x%5E3%20&plus;%203x%20-4%2C%20x_%7B0%7D%20%3D%203)  
 **Planteamiento del problema:** Para hallar la solución se utilizó el siguiente código, el cual esta basado en el propuesto en el taller añadiendo el cálculo del número de operaciónes mínimas realizadas. Para dicho cálculo, se tiene en cuenta que una división es un amultiplicación, una multiplicación son varias sumas y una suma es una operación.  
@@ -93,7 +93,7 @@ Derivando se obtiene: 35x^4 + 24x^3 + -18x^2 + 3
 Resultado por metodo de Horner: 3324 con 16 operaciones  
 Resultado evaluacion normal: 3324 con 47 operaciones 
 
-### -Punto número 2
+### Punto 2
 **Descripción del problema:** Se necesita un recipiente rectangular, sin tapa, de un litro de capacidad. Para construirlo se debe usar una lámina rectangular de 32cm de largo y 24 cm de ancho. El procedimiento será recortar un cuadrado idéntico en cada una de las cuatro esquinas y doblar los bordes de la lámina para formar el recipiente.
 
 **Objetivo**: Determinar la medida del lado del cuadrado que se debe recortar en cada esquina para que el recipiente tenga la capacidad requerida. Se debe hacer uso de dos métodos distintos para resolver el problema.
@@ -337,7 +337,7 @@ Es mucho más eficiente que la computadora realice las operaciones de un método
 	Porque en muchas ocasiones a pesar de que el método de análisis numérico utilizado converge, la solución puede que no aplique para resolver el problema.
 
 
-- ### Punto número 5
+### Punto 5
 **Descripción del problema:** Calcule la propagación del error dado por las operaciones aritméticas, para el siguiente problema  
 **Problema:** La velocidad de una partícula es constante e igual a 4 m/s, medida con un error de 0.1 m/s durante un tiempo de recorrido de 5 seg. medido con error de 0.1 seg. Determine el error absoluto y el error relativo en el valor de la distancia recorrida.  
 Se tiene:  
@@ -368,7 +368,7 @@ while vi<=v+ev:
 Con lo cual se obtuvo:  
 ![Salida del código](https://github.com/donadol/analisis_numerico_1826/blob/master/Trabajo%20en%20pareja%201/error.png)
 
-### -Punto número 6
+### Punto 6
 La eficiencia de un algoritmo está denotada por T(n).
 
 
@@ -453,7 +453,7 @@ Luego se tiene que:
 
 De esta manera, T(n) es de orden O(log n).
 
-### -Punto número 7
+### Punto 7
 
 **Descripción del problema**: Utilice el método de Newton para resolver el problema, muestre gráficamente cómo se comporta la convergencia a la solución. Una partícula se mueve en el espacio con el vector de posición R(t)=(2cos(t), sen(t), 0). Se requiere conocer el tiempo en el que el objeto se encuentra más cerca del punto P(2,1,0). Utilice el método de Newton con cuatro decimales de precisión.
 
@@ -510,7 +510,7 @@ En la siguiente gráfica se pueden apreciar mejor las rectas tangentes y su cerc
 
 ![convervengciacerca.p7](https://github.com/JhonnyParraB/AnalisisNumerico-1826-/blob/master/Taller%201/convergenciacerca-p7.png)
 
-- ### Punto número 11
+### Punto 11
 **Descripción del problema:** Método de Muller.  
 **Planteamiento del problema:** El método de Muller consiste en obtener los coeficientes de la parábola que pasa por tres puntos. Dichos coeficientes se sustituyen en la fórmula cuadratica para tener el valor donde la parabola corta con el eje x, es decir la raiz.  
 Se escribe la ecuación de la parábola de la siguiente manera:  
@@ -586,7 +586,7 @@ muller(x0,x1,x2,tol,n)
 Con lo cual se obtuvo:  
 ![Salida del código](https://github.com/donadol/analisis_numerico_1826/blob/master/Trabajo%20en%20pareja%201/muller.png)
 
-### -Punto número 13
+### Punto 13
 **Descripción**: Encuentre una fórmula iterativa de convergencia cuadrática y defina un intervalo de convergencia apropiado para calcular la raiz real n-ésima de un número real. El algoritmo solamente debe incluir operaciones airtméticas elementales.
 
 **Solución**: El siguiente es un método basado en el método de Newton que permite obtener la raiz n-esima de un número a. La solución de la siguiente ecuación igualada a 0 permite determinar la raiz n-esima del número a:
@@ -640,7 +640,7 @@ La raiz n-esima (n= 4 ) de  256  es  4  con un total de  4  iteraciones.
 Aunque el método no diverge, es importante que el número x0 sea un número positivo siempre que se quiera evaluar una raiz n-esima donde n es un número par.
 
 
-- ### Punto número 15
+### Punto 15
 **Problema:** Se propone resolver la ecuación ![ecuacion](http://latex.codecogs.com/gif.latex?%5Cint_%7B0%7D%5E%7Bx%7D%20%285-e%5Eu%29du%3D2) con el método del punto fijo.  
 a) Obtenga la ecuación f(x)=0 resolviendo la integral.  
 b) Mediante un gráfico aproximado, o evaluando directamente, localice las raíces reales.  
