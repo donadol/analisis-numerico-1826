@@ -114,10 +114,8 @@ Con lo cual se obtuvo:
 ![Salida del código](https://github.com/donadol/analisis_numerico_1826/blob/master/Trabajo%20en%20pareja%201/error.png)
 
 - ### Punto número 11
-**Descripción del problema:** Método de Muller
-**Planteamiento del problema:** El método de Muller consiste en obtener los coeficientes de la parábola que pasa por tres puntos. 
-Dichos coeficientes se sustituyen en la fórmula cuadrática para tener el valor donde la parabola corta con el eje x, es decir la raíz.
-**Planteamiento del problema:** El método de Muller consiste en obtener los coeficientes de la parábola que pasa por tres puntos. Dichos coeficientes se sustituyen en la fórmula cuadratica para tener el valor donde la parabola corta con el eje x, es decir la raiz.
+**Descripción del problema:** Método de Muller.  
+**Planteamiento del problema:** El método de Muller consiste en obtener los coeficientes de la parábola que pasa por tres puntos. Dichos coeficientes se sustituyen en la fórmula cuadratica para tener el valor donde la parabola corta con el eje x, es decir la raiz.  
 Se escribe la ecuación de la parábola de la siguiente manera:  
 ![ecuacion](http://latex.codecogs.com/gif.latex?f%28x%29%20%3D%20a%28x-x_%7B2%7D%29%5E2&plus;b%28x-x_%7B2%7D%29%20&plus;%20c)  
 Se quiere que esta parábola pase por tres puntos:  
@@ -127,7 +125,7 @@ Para determinar los coeficientes a, b y c, se sustituyen en la fórmula cuadrát
 (2) ![ecuacion](http://latex.codecogs.com/gif.latex?f%28x_%7B1%7D%29%20%3D%20a%28x_%7B1%7D-x_%7B2%7D%29%5E2&plus;b%28x_%7B1%7D-x_%7B2%7D%29%20&plus;%20c)  
 (3) ![ecuacion](http://latex.codecogs.com/gif.latex?f%28x_%7B2%7D%29%20%3D%20a%28x_%7B2%7D-x_%7B2%7D%29%5E2&plus;b%28x_%7B2%7D-x_%7B2%7D%29%20&plus;%20c)  
 Al evaluar en x2, se obtiene:  
-![ecuacion](http://latex.codecogs.com/gif.latex?f%28x_%7B2%7D%29%3Dc) 
+![ecuacion](http://latex.codecogs.com/gif.latex?f%28x_%7B2%7D%29%3Dc)  
 Este valor se sustituye en las ecuaciones (1) y (2), con lo cual se obtiene  
 (4) ![ecuacion](http://latex.codecogs.com/gif.latex?f%28x_%7B0%7D%29-f%28x_%7B2%7D%29%3Da%28x_%7B0%7D-x_%7B2%7D%29%5E2&plus;b%28x_%7B0%7D-x_%7B2%7D%29)  
 (5) ![ecuacion](http://latex.codecogs.com/gif.latex?f%28x_%7B1%7D%29-f%28x_%7B2%7D%29%3Da%28x_%7B1%7D-x_%7B2%7D%29%5E2&plus;b%28x_%7B1%7D-x_%7B2%7D%29)  
@@ -136,7 +134,7 @@ Para calcular a y b, se establecen las siguientes relaciones:
 ![ecuacion](http://latex.codecogs.com/gif.latex?h_%7B1%7D%3Dx_%7B2%7D-x_%7B1%7D)  
 ![ecuacion](http://latex.codecogs.com/gif.latex?%5Cdelta%20_%7B0%7D%3D%5Ctfrac%7Bf%28x_%7B1%7D%29-f%28x_%7B0%7D%29%7D%7Bx_%7B1%7D-x_%7B0%7D%7D)  
 ![ecuacion](http://latex.codecogs.com/gif.latex?%5Cdelta%20_%7B1%7D%3D%5Ctfrac%7Bf%28x_%7B2%7D%29-f%28x_%7B1%7D%29%7D%7Bx_%7B2%7D-x_%7B1%7D%7D)  
-Lo anterior se remplaza en (4) y (5), y se obtiene:
+Lo anterior se remplaza en (4) y (5), y se obtiene:  
 ![ecuacion](http://latex.codecogs.com/gif.latex?b%28h_%7B0%7D&plus;h_%7B1%7D%29-a%28h_%7B0%7D&plus;h_%7B1%7D%29%5E2%3Dh_%7B0%7D%5Cdelta%7B0%7D&plus;h_%7B1%7D%5Cdelta%7B1%7D)  
 De lo anterior se despeja a y b. Por ende, se tiene:  
 ![ecuacion](http://latex.codecogs.com/gif.latex?a%3D%5Cfrac%7B%5Cdelta_%7B1%7D-%5Cdelta_%7B0%7D%7D%7Bh_%7B1%7D&plus;h_%7B0%7D%7D)  
@@ -196,7 +194,7 @@ Con lo cual se obtuvo:
 a) Obtenga la ecuación f(x)=0 resolviendo la integral.  
 b) Mediante un gráfico aproximado, o evaluando directamente, localice las raíces reales.  
 c) Proponga una ecuación equivalente x=g(x) y determine el intervalo de convergencia para calcular una de las dos raíces.  
-d) Del intervalo anterior, elija un valor inicial y realice 5 iteraciones. En cada iteración verifique que se cumple la condición de convergencia del punto fijo y estime el error de truncamiento en el último resultado
+d) Del intervalo anterior, elija un valor inicial y realice 5 iteraciones. En cada iteración verifique que se cumple la condición de convergencia del punto fijo y estime el error de truncamiento en el último resultado.  
 **Solución:**  
 a) Al resolver la integral se obtiene:  
 ![ecuacion](http://latex.codecogs.com/gif.latex?f%28x%29%3D5x-e%5Ex-1)  
@@ -211,7 +209,7 @@ c) Para la ecuación equivalente x=g(x) se tienen las siguientes opciones:
 Para elegir la ecuación a utilizar se derivan y se ve si cumple la condición de convergencia del punto fijo, es decir que sea menor que 1 en magnitud.  
 (3)  ![ecuacion](http://latex.codecogs.com/gif.latex?%5Cfrac%7Bd%20g_%7B0%7D%28x%29%7D%7Bdx%7D%3D%5Cfrac%7Be%5Ex%7D%7B5%7D)  
 (4)  ![ecuacion](http://latex.codecogs.com/gif.latex?%5Cfrac%7Bd%20g_%7B1%7D%28x%29%7D%7Bdx%7D%3D%5Cfrac%7B5%7D%7B5x-1%7D)  
-Donde (3) corresponde a la derivada de (1), y (3) de (2) 
+Donde (3) corresponde a la derivada de (1), y (3) de (2).  
 Al evaluarlas en x=0.5, se obtuvo:  
 ![ecuacion](http://latex.codecogs.com/gif.latex?g_%7B0%7D%280.5%29%3D0.3297%2C%20g_%7B1%7D%280.5%29%3D3.3333)  
 Como se observa, la única que cumple la condición de convergencia es ![ecuacion](http://latex.codecogs.com/gif.latex?g_%7B0%7D%28x%29), por lo cual es la escogida para resolver la ecuación.  
