@@ -3,7 +3,7 @@
 - ### Punto número 1
 **Descripción del problema:** Evaluar el polinomio en cada valor indicado y el número de operaciones mínimo para hacerlo, para el siguiente polinomio junto con su derivada.  
 ![ecuacion](http://latex.codecogs.com/gif.latex?P%28x%29%20%3D%207x%5E5%20&plus;%206x%5E4%20-%206x%5E3%20&plus;%203x%20-4%2C%20x_%7B0%7D%20%3D%203)  
-Para hallar la solución se utilizó el siguiente código, el cual esta basado en el propuesto en el taller añadiendo el cálculo del número de operaciónes mínimas realizadas. Para dicho cálculo, se tiene en cuenta que una división es un amultiplicación, una multiplicación son varias sumas y una suma es una operación.  
+**Planteamiento del problema:** Para hallar la solución se utilizó el siguiente código, el cual esta basado en el propuesto en el taller añadiendo el cálculo del número de operaciónes mínimas realizadas. Para dicho cálculo, se tiene en cuenta que una división es un amultiplicación, una multiplicación son varias sumas y una suma es una operación.  
 ``` c++
 #include <iostream>
 #include <cmath>
@@ -83,7 +83,7 @@ Resultado por metodo de Horner: 3324 con 16 operaciones
 Resultado evaluacion normal: 3324 con 47 operaciones 
 
 - ### Punto número 5
-**Descripción del problema:** Calcule la propagación del error dado por las operaciones aritméticas, para el siguiente problema
+**Descripción del problema:** Calcule la propagación del error dado por las operaciones aritméticas, para el siguiente problema  
 **Problema:** La velocidad de una partícula es constante e igual a 4 m/s, medida con un error de 0.1 m/s durante un tiempo de recorrido de 5 seg. medido con error de 0.1 seg. Determine el error absoluto y el error relativo en el valor de la distancia recorrida.  
 Se tiene:  
 v = 4, Ev = 0.1 (Velocidad)  
@@ -111,16 +111,7 @@ while vi<=v+ev:
     vi+=ev
 ```
 Con lo cual se obtuvo:  
-Vel Time Distance   Ea   Er  
-3.9  4.9    19.11 0.89 4.45  
-3.9  5.0     19.5 0.50 2.50  
-3.9  5.1    19.89 0.11 0.55  
-4.0  4.9     19.6 0.40 2.00  
-4.0  5.0     20.0 0.00 0.00  
-4.0  5.1     20.4 0.40 2.00  
-4.1  4.9    20.09 0.09 0.45  
-4.1  5.0     20.5 0.50 2.50  
-4.1  5.1    20.91 0.91 4.55  
+![Salida del código](https://github.com/donadol/analisis_numerico_1826/blob/master/Trabajo%20en%20pareja%201/error.png)
 
 - ### Punto número 11
 **Descripción del problema:** Método de Muller
@@ -153,11 +144,12 @@ De lo anterior se despeja a y b. Por ende, se tiene:
 ![ecuacion](http://latex.codecogs.com/gif.latex?c%3Df%28x_%7B2%7D%29)  
 Luego de encontrar los coeficientes, se remplazan en la ecuación cuadrática para determinar el valor de la raíz
 ![ecuacion](http://latex.codecogs.com/gif.latex?x_%7B3%7D%3Dx_%7B2%7D&plus;%5Cfrac%7B-2c%7D%7Bb%5Cpm%20%5Csqrt%7Bb%5E2-4ac%7D%7D)  
-Para la implementación de dicho método se utilizó el siguiente código
-´´´python
+Para la implementación de dicho método se utilizó el siguiente código:  
+``` python
 import cmath
 def f(x):
- return cmath.cos(3*x)+cmath.exp(x)
+ return pow(x,3)-13*x-12
+ #16*pow(x,4)-40*pow(x,3)+5*pow(x,2)+20*x+6
 def muller(x0,x1,x2,tol,n):
   i=0
   print('Iter  X')
@@ -195,7 +187,61 @@ x2=float(input('Ingrese x2:'))
 tol=float(input('Ingrese la tolerancia:'))
 n=int(input('Ingrese número máximo de iteraciones:'))
 muller(x0,x1,x2,tol,n)
-´´´
+```
+Con lo cual se obtuvo:  
+![Salida del código](https://github.com/donadol/analisis_numerico_1826/blob/master/Trabajo%20en%20pareja%201/muller.png)
+
+- ### Punto número 15
+**Problema:** Se propone resolver la ecuación ![ecuacion](http://latex.codecogs.com/gif.latex?%5Cint_%7B0%7D%5E%7Bx%7D%20%285-e%5Eu%29du%3D2) con el método del punto fijo.  
+a) Obtenga la ecuación f(x)=0 resolviendo la integral.  
+b) Mediante un gráfico aproximado, o evaluando directamente, localice las raíces reales.  
+c) Proponga una ecuación equivalente x=g(x) y determine el intervalo de convergencia para calcular una de las dos raíces.  
+d) Del intervalo anterior, elija un valor inicial y realice 5 iteraciones. En cada iteración verifique que se cumple la condición de convergencia del punto fijo y estime el error de truncamiento en el último resultado
+**Solución:**  
+a) Al resolver la integral se obtiene:  
+![ecuacion](http://latex.codecogs.com/gif.latex?f%28x%29%3D5x-e%5Ex-1)  
+b) Las raíces reales obtenidas son:
+![ecuacion](http://latex.codecogs.com/gif.latex?x_%7B0%7D%3D0.54488%2C%20x_%7B1%7D%3D2.39614)  
+Lo cuales se pueden observar en la siguiente gráfica:  
+![Gráfica raíces reales](https://github.com/donadol/analisis_numerico_1826/blob/master/Trabajo%20en%20pareja%201/grafica_punto_fijo.png)  
+Se escoge la raíz ![ecuacion](http://latex.codecogs.com/gif.latex?x_%7B0%7D%3D0.54488) para el procedimiento  
+c) Para la ecuación equivalente x=g(x) se tienen las siguientes opciones:  
+(1) ![ecuacion](http://latex.codecogs.com/gif.latex?x%3Dln%285x-1%29)  
+(2) ![ecuacion](http://latex.codecogs.com/gif.latex?g_%7B1%7D%28x%29%3Dln%285x-1%29)  
+Para elegir la ecuación a utilizar se derivan y se ve si cumple la condición de convergencia del punto fijo, es decir que sea menor que 1 en magnitud.  
+(3)  ![ecuacion](http://latex.codecogs.com/gif.latex?%5Cfrac%7Bd%20g_%7B0%7D%28x%29%7D%7Bdx%7D%3D%5Cfrac%7Be%5Ex%7D%7B5%7D)  
+(4)  ![ecuacion](http://latex.codecogs.com/gif.latex?%5Cfrac%7Bd%20g_%7B1%7D%28x%29%7D%7Bdx%7D%3D%5Cfrac%7B5%7D%7B5x-1%7D)  
+Donde (3) corresponde a la derivada de (1), y (3) de (2) 
+Al evaluarlas en x=0.5, se obtuvo:  
+![ecuacion](http://latex.codecogs.com/gif.latex?g_%7B0%7D%280.5%29%3D0.3297%2C%20g_%7B1%7D%280.5%29%3D3.3333)  
+Como se observa, la única que cumple la condición de convergencia es ![ecuacion](http://latex.codecogs.com/gif.latex?g_%7B0%7D%28x%29), por lo cual es la escogida para resolver la ecuación.  
+d) Para la solución se utilizó el siguiente código:
+``` python
+import math
+
+def g(x):
+  return ((1+math.exp(x))/5)
+
+def error(x):
+  return abs((g(x)-x)/g(x))*100
+
+def dg(x):
+  return math.exp(x)/5
+  
+print('Ecuación a resolver: g(x)=(1+e^x)/5 en el intervalo [0,1]')
+print('Ingrese x para aproximación inicial:')
+x=float(input('x='))
+print('     x   g(x) Error%')
+for i in range(5):
+  x=round(x,4)
+  e=round(error(x),4)
+  if abs(dg(x))<1:
+    z='Cumple criterio de convergencia del punto fijo'
+  print(repr(x).ljust(6,'0'),format(g(x),'.4g'), repr(e).ljust(6,'0'), z)
+  x=g(x)
+```
+Con lo cual se obtuvo:  
+![Salida del código](https://github.com/donadol/analisis_numerico_1826/blob/master/Trabajo%20en%20pareja%201/punto_fijo.png)
 
 ## Bibliografía
 [Método de Muller y ejercicios](https://prezi.com/ihj_vsqouxcb/metodo-de-muller-y-ejercicios/)
