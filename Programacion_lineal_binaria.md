@@ -38,8 +38,15 @@ Se debe tener en cuenta:
    
 Pseudocódigo:
 1. Inicializar todas las variables en 0. ![ecuacion](https://latex.codecogs.com/gif.latex?X_%7Bj%7D%20%3D%200%2C%20%5Cforall%20j)
-2. Evaluar cada restrición.
-3. Asignar 
+2. Inicializar j=0.
+3. Evaluar cada restrición.
+4. Calcular infactibilidad de la solución. 
+6. Asignar Xj=1 y al resto asignar 0.
+7. Aumentar j en 1.
+8. Repetir pasos 3 a 6 hasta j igual al número de variables.
+9. Si una solución tiene infactibilidad igual a 0, se ha encontrado la solución factible y óptima.
+10. Si varias soluciones tienen infactibilidad igual a 0, se remplazan en la Z y la solución óptima será aquella que haga que Z sea mínima.
+11. Si ninguna de las condicionesa anteriores se cumple, se coge la solución que menor infactibilidad tenga y de ella la variable con valor 1. Se remplaza en las restricciones dicha variable y sobre las nuevas restricciones se repite los pasos 2 a 10 hasta encontrar la solución óptima factible.  
 
 - Deducción de la formula (Manera inductiva dos ecuaciones, n ecuaciones)
 - Metodo en R (Con comentarios)
