@@ -1,5 +1,6 @@
 f<-function(x){
-  return(log(x+2))
+  if(is.nan(log(x+2))) return(0)
+  else return(log(x+2))
 }
 g<-function(x){
   return(sin(x))
@@ -7,6 +8,7 @@ g<-function(x){
 Punto2<-function(x0,x1,precision){
   x2=0
   if(f(x0)*f(x1)<0){
+    cat ("| x0 | x1 | x2 |","\n")
     while(TRUE){
       x2=x1-f(x1)/(f(x1)-f(x0))*(x1-x0)
       if(f(x2)*f(x1)<0){
