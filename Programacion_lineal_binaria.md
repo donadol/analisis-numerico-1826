@@ -51,9 +51,6 @@ Pseudocódigo:
 10. Si varias soluciones tienen infactibilidad igual a 0, se remplazan en la Z y la solución óptima será aquella que haga que Z sea mínima.
 11. Si ninguna de las condicionesa anteriores se cumple, se coge la solución que menor infactibilidad tenga y de ella la variable con valor 1. Se remplaza en las restricciones dicha variable y sobre las nuevas restricciones se repite los pasos 2 a 10 hasta encontrar la solución óptima factible.  
 
-- Deducción de la formula (Manera inductiva dos ecuaciones, n ecuaciones)
-- Metodo en R (Con comentarios)
-
 ### Método implementado en R:
 
 ``` R
