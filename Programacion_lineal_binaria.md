@@ -83,7 +83,7 @@ ProgramacionLinealBinaria<-function(z, n, restriccionesIzquierda, restriccionesS
       
       infactibilidad=0
       
-      for (m in 1:n){
+      for (m in 1:n){        #Se va asignando alternativamente el valor de 1 a cada variable
         if (!(m %in% iMenores))
           assign(paste("X", m, sep = ""), 0)
         if (m==i)
