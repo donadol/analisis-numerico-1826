@@ -15,6 +15,7 @@ Donde todos los ci con coeficientes no negativos.
 con ![imagen](http://latex.codecogs.com/gif.latex?%5Cbg_white%20X1%2C%5C%3AX2%2C%5C%3AX3...%5C%3AXn) variables independientes que pueden tomar únicamente valores de 0 y 1. Sujeta a restricciones de la forma:
 
 ![imagen](http://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Csum%20%5C%3Aai%5Ccdot%20Xi%5C%3A%5Cle%20%5C%3Abi)
+
 ![imagen](http://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Csum%20%5C%3Aai%5Ccdot%20Xi%5C%3A%5Cge%20%5C%3Abi)
 
 
