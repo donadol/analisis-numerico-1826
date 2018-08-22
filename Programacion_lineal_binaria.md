@@ -2,7 +2,7 @@
 ### Presentado por: Laura Donado y Jhonny Parra
 ## Método Aditivo de Egon Balas
 
-## Descripción formal 
+### Descripción formal 
 
 Un problema de programación lineal es un problema de minimizar o maximizar una función lineal sujeta a restricciones lineales del tipo desigualdad, igualdad o ambas. 
 
