@@ -25,6 +25,7 @@ El método aditivo de Egon Balas se basa en que si se tiene una función objetiv
 Entrada: 
 * __Z:__ Función objetivo.  
 * __R:__ Vector con ecuaciones de restricción.   
+  
 Salida:
 * __Z*:__ Solución óptima factible. 
 * __X:__ Vector con valores para las variables.   
