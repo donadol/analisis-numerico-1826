@@ -1,22 +1,23 @@
 # Interpolación con Lagrange baricéntrico
 ## Realizado por: Laura Donado y Jhonny Parra
 
-Usando el método de interpolación Lagrange baricéntrico se logró gráficar la silueta de un pato en pleno vuelo.  
+Usando el método de interpolación Lagrange baricéntrico se logró gráficar la silueta de un pato en pleno vuelo, que se puede observar a continuación.  
+![Pato](https://github.com/donadol/analisis_numerico_1826/blob/master/Interpolacion/pato1.png)  
 Los puntos fueron tomaron de [aquí](http://blog.espol.edu.ec/matg1013/pato-en-pleno-vuelo/).  
-Lo anterior se realizó con el siguiente código
+Lo anterior se realizó con el siguiente código en R, donde se hizo uso de la paquete pracma para la función barylag.
 ```r
 require(pracma)
 
 # Perfil superior
-xi = c(0.9, 1.9,  2.6, 3.0, 4.4,  4.7,   6.0, 8.0,  10.5,  11.6, 12.6, 13.0, 13.3,
+xi = c(0.9, 1.9, 2.6, 3.0, 4.4, 4.7, 6.0, 8.0, 10.5, 11.6, 12.6, 13.0, 13.3,
        # Perfil inferior cabeza
        0.817, 1.022, 1.191,  1.834, 2.264, 2.962, 4.202, 4.779,  5.527,
        # Perfil ala superior
-       4.659, 4.865,   5.478, 5.527,
+       4.659, 4.865, 5.478, 5.527,
        # Perfil ala inferior
-       4.659, 4.750, 4.990, 5.289,  5.839,  6.606, 8.141, 
+       4.659, 4.750, 4.990, 5.289, 5.839, 6.606, 8.141, 
        # Perfil inferior posterior
-       8.473,  9.337, 10.572,  11.501, 12.364, 12.763, 13.300,
+       8.473, 9.337, 10.572, 11.501, 12.364, 12.763, 13.300,
        0.817, 0.9)
 
 # Perfil superior 
@@ -71,6 +72,10 @@ DibujarLinea (38, 40)
 
 #Gráfica unión perfil inferior y superior
 DibujarLinea (41, 42)
-```
-
-Consiguiendo la siguiente gráfica
+```  
+Se utilizaron en total 37 puntos para las interpolaciones, como resultado se obtuvo la siguiente gráfica:  
+![Salida del código](https://github.com/donadol/analisis_numerico_1826/blob/master/Interpolacion/pato.png) 
+  
+## Bibliografía
+- [Pato en pleno vuelo](http://blog.espol.edu.ec/matg1013/pato-en-pleno-vuelo/)  
+- [Package Pracma pg 29](https://cran.r-project.org/web/packages/pracma/pracma.pdf)
