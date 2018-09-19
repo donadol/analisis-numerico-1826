@@ -1,1 +1,3 @@
-# analisis_numerico_1826
+# Analisis Númerico
+# Clase: 1826
+# Laura Donado Yance
