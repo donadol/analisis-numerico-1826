@@ -372,7 +372,7 @@ while vi<=v+ev:
     vi+=ev
 ```
 Con lo cual se obtuvo:  
-![Salida del código](https://github.com/donadol/analisis_numerico_1826/blob/master/Trabajo%20en%20pareja%201/error.png)
+![Salida del código](https://github.com/donadol/analisis_numerico_1826/blob/master/Talleres%20y%20Tareas/Trabajo%20en%20pareja%201/error.png)
 
 ### Punto 6
 La eficiencia de un algoritmo está denotada por T(n).
@@ -509,12 +509,12 @@ La particula está más cerca al punto P(2, 1, 0) en el tiempo t=0.5872+(2pi)n d
 
 La convergencia de la solución se puede observar en la siguiente gráfica:
 
-![convervengcia.p7](https://github.com/JhonnyParraB/AnalisisNumerico-1826-/blob/master/Taller%201/convergencia-p7.png)
+![convervengcia.p7](https://github.com/JhonnyParraB/AnalisisNumerico-1826-/blob/master/Talleres%20y%20tareas/Taller%201/convergencia-p7.png)
 
 De rojo está la función d'(t), las demás son las rectas tangentes generadas por el método de Newton. 
 En la siguiente gráfica se pueden apreciar mejor las rectas tangentes y su cercania con la raiz de d'(t):
 
-![convervengciacerca.p7](https://github.com/JhonnyParraB/AnalisisNumerico-1826-/blob/master/Taller%201/convergenciacerca-p7.png)
+![convervengciacerca.p7](https://github.com/JhonnyParraB/AnalisisNumerico-1826-/blob/master/Talleres%20y%20tareas/Taller%201/convergenciacerca-p7.png)
 
 ### Punto 11
 **Descripción del problema:** Método de Muller.  
@@ -590,7 +590,7 @@ n=int(input('Ingrese número máximo de iteraciones:'))
 muller(x0,x1,x2,tol,n)
 ```
 Con lo cual se obtuvo:  
-![Salida del código](https://github.com/donadol/analisis_numerico_1826/blob/master/Trabajo%20en%20pareja%201/muller.png)
+![Salida del código](https://github.com/donadol/analisis_numerico_1826/blob/master/Talleres%20y%20Tareas/Trabajo%20en%20pareja%201/muller.png)
 
 ### Punto 13
 **Descripción**: Encuentre una fórmula iterativa de convergencia cuadrática y defina un intervalo de convergencia apropiado para calcular la raiz real n-ésima de un número real. El algoritmo solamente debe incluir operaciones airtméticas elementales.
@@ -658,7 +658,7 @@ a) Al resolver la integral se obtiene:
 b) Las raíces reales obtenidas son:
 ![ecuacion](http://latex.codecogs.com/gif.latex?x_%7B0%7D%3D0.54488%2C%20x_%7B1%7D%3D2.39614)  
 Lo cuales se pueden observar en la siguiente gráfica:  
-![Gráfica raíces reales](https://github.com/donadol/analisis_numerico_1826/blob/master/Trabajo%20en%20pareja%201/grafica_punto_fijo.png)  
+![Gráfica raíces reales](https://github.com/donadol/analisis_numerico_1826/blob/master/Talleres%20y%20Tareas/Trabajo%20en%20pareja%201/grafica_punto_fijo.png)  
 Se escoge la raíz ![ecuacion](http://latex.codecogs.com/gif.latex?x_%7B0%7D%3D0.54488) para el procedimiento  
 c) Para la ecuación equivalente x=g(x) se tienen las siguientes opciones:  
 (1) ![ecuacion](http://latex.codecogs.com/gif.latex?x%3Dln%285x-1%29)  
@@ -696,7 +696,7 @@ for i in range(5):
   x=g(x)
 ```
 Con lo cual se obtuvo:  
-![Salida del código](https://github.com/donadol/analisis_numerico_1826/blob/master/Trabajo%20en%20pareja%201/punto_fijo.png)
+![Salida del código](https://github.com/donadol/analisis_numerico_1826/blob/master/Talleres%20y%20Tareas/Trabajo%20en%20pareja%201/punto_fijo.png)
 
 ## Bibliografía
 [Método de Muller y ejercicios](https://prezi.com/ihj_vsqouxcb/metodo-de-muller-y-ejercicios/)
