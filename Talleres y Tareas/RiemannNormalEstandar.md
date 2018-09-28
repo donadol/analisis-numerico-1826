@@ -17,7 +17,8 @@ Entonces la suma de Riemann de f(x) es:
 
 ![imagen](http://4.bp.blogspot.com/-JOwd7DZ-wng/Txs51tPD9dI/AAAAAAAAABs/wEkDB5XZnrE/s1600/ooooo.png)
 
-donde xi-1 ≤ yi ≤ xi. La elección de yi en este intervalo suele ser arbitraria.
+donde xi-1 ≤ yi ≤ xi.  
+La elección de yi en este intervalo suele ser arbitraria.
 
 Si yi = xi-1 para todo i, entonces se denomina S como la suma de Riemann por la izquierda. 
 
@@ -95,9 +96,9 @@ graficarNormalEstandar <-function(){
   y=f(x)
   plot(x,y,type="l",lwd=1,col="red")
   #cat("x      |y    \n")
-  for( i in 1:length(x)){
+  #for( i in 1:length(x)){
     #cat(format(round(x[i], 4), nsmall = 4), " | ", format(round(f(x[i]),4), nsmall=4), "\n")
-  }
+  #}
 }
 ```
 
