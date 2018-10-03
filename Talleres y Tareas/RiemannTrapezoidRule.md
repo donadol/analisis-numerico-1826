@@ -16,8 +16,9 @@ consideramos la partición de este intervalo P=  {[x0, x1), [x1, x2), ... [xn-1,
 
 
 ## Solución e implementación en R:
-
+### Área entre las dos curvas
 ```r
+
 f<-function(x){
   #x^3-9*x
   return(sin(x))
@@ -27,29 +28,38 @@ g<-function(x){
   #9-x^2
   return(cos(x))
 }
-
+ 
 trapezoid<-function(inicio, final, particiones){
-  graficarFcn()
+  graficarFcn(inicio-1, final+1, .1)
   h=(final-inicio)/particiones
   x=seq(inicio, final, length=particiones+1)
   sum=0
-  cat("x(i-1)   | x(i)      | f(x(i-1)) | f(x(i))   | g(x(i-1))| g(x(i))  | Área\n")
+  cat("x(i-1)      |  x(i)        |  f(x(i-1))   |  f(x(i))     |  g(x(i-1))   |  g(x(i))     |  Área\n")
   for(i in 2:length(x)){
-    b1=abs(f(x[i-1]))+abs(g(x[i-1]))
-    b2=abs(f(x[i]))+abs(g(x[i]))
+    if(abs(f(x[i-1]))>abs(g(x[i-1]))){
+      b1=abs(f(x[i-1]))-abs(g(x[i-1]))
+    }
+    else{
+      b1=-abs(f(x[i-1]))+abs(g(x[i-1]))
+    }
+    if(abs(f(x[i]))>abs(g(x[i]))){
+      b2=abs(f(x[i]))-abs(g(x[i]))
+    }
+    else{
+      b2=-abs(f(x[i]))+abs(g(x[i]))
+    }
     A=h/2*(b1+b2)
     sum=sum+A
     segments(x[i-1], f(x[i-1]), x[i-1], g(x[i-1]))
     segments(x[i], f(x[i]), x[i], g(x[i]))
     segments(x[i-1], f(x[i-1]), x[i], f(x[i]))
     segments(x[i-1], g(x[i-1]), x[i], g(x[i]))
-    cat(format(round(x[i-1],4),nsmall=4), " | ", format(round(x[i],4),nsmall=4), " | ", format(round(f(x[i-1]),4),nsmall=4), " | ", format(round(f(x[i]),4),nsmall=4)," | ", format(round(g(x[i-1]),4),nsmall=4), " | ", format(round(g(x[i]),4),nsmall=4), " | ", format(round(A,4),nsmall=4), "\n")
+    cat(format(round(x[i-1],8),nsmall=8), " | ", format(round(x[i],8),nsmall=8), " | ", format(round(f(x[i-1]),8),nsmall=8), " | ", format(round(f(x[i]),8),nsmall=8)," | ", format(round(g(x[i-1]),8),nsmall=8), " | ", format(round(g(x[i]),8),nsmall=8), " | ", format(round(A,8),nsmall=8), "\n")
   }
-  
-}
-
-graficarFcn<-function(){
-  x<-seq(-4, 4, .1)
+  cat("El área entre las dos curvas es: ", sum, "\n")
+} 
+graficarFcn<-function(inicio, final, pasos){
+  x<-seq(inicio, final, pasos)
   plot(x, f(x), col="blue",type = "l")
   lines(x, g(x), col="red", type = "l")
 }
@@ -58,19 +68,19 @@ graficarFcn<-function(){
 
 A continuación, las salidas obtenidas con el intervalo [-pi/2, pi/2] usando diez particiones:
 
-#### Con trapezoid(-pi/2, pi/2, 10):
+#### Con trapezoid(0, pi/2, 10):
 |x(i-1)   | x(i)      | f(x(i-1))  | f(x(i))  | g(x(i-1))  | g(x(i))  | Área|
 | ------------ | ------------ | ------------ | ------------ | ------------ | ------------ | ------------ |
-|-1.5708  | -1.2566   |  -1.0000  |  -0.9511 | 0.0000  |  0.3090  |  0.3550 |
-|-1.2566  |  -0.9425  |  -0.9511  |  -0.8090 | 0.3090  |  0.5878  |  0.4173 |
-|-0.9425  |  -0.6283  |  -0.8090  |  -0.5878 | 0.5878  |  0.8090  |  0.4388 |
-|-0.6283  |  -0.3142  |  -0.5878  |  -0.3090 | 0.8090  |  0.9511  |  0.4173 |
-|-0.3142  |  0.0000   |  -0.3090  |  0.0000  | 0.9511  |  1.0000  |  0.3550 |
-|0.0000   |  0.3142   |  0.0000   |  0.3090  | 1.0000  |  0.9511  |  0.3550 |
-|0.3142   |  0.6283   |  0.3090   |  0.5878  | 0.9511  |  0.8090  |  0.4173 |
-|0.6283   |  0.9425   |  0.5878   |  0.8090  | 0.8090  |  0.5878  |  0.4388 |
-|0.9425   |  1.2566   |  0.8090   |  0.9511  | 0.5878  |  0.3090  |  0.4173 |
-|1.2566   |  1.5708   |  0.9511   |  1.0000  | 0.3090  |  0.0000  |  0.3550 |
+|0.00000000  |  0.15707963  |  0.00000000  |  0.15643447  |  1.00000000  |  0.98768834  |  0.14382634 |
+|0.15707963  |  0.31415927  |  0.15643447  |  0.30901699  |  0.98768834  |  0.95105652  |  0.11571219 |
+|0.31415927  |  0.47123890  |  0.30901699  |  0.45399050  |  0.95105652  |  0.89100652  |  0.08474882 |
+|0.47123890  |  0.62831853  |  0.45399050  |  0.58778525  |  0.89100652  |  0.80901699  |  0.05169866 |
+|0.62831853  |  0.78539816  |  0.58778525  |  0.70710678  |  0.80901699  |  0.70710678  |  0.01737550 |
+|0.78539816  |  0.94247780  |  0.70710678  |  0.80901699  |  0.70710678  |  0.58778525  |  0.01737550 |
+|0.94247780  |  1.09955743  |  0.80901699  |  0.89100652  |  0.58778525  |  0.45399050  |  0.05169866 |
+|1.09955743  |  1.25663706  |  0.89100652  |  0.95105652  |  0.45399050  |  0.30901699  |  0.08474882 |
+|1.25663706  |  1.41371669  |  0.95105652  |  0.98768834  |  0.30901699  |  0.15643447  |  0.11571219 |
+|1.41371669  |  1.57079633  |  0.98768834  |  1.00000000  |  0.15643447  |  0.00000000  |  0.14382634  |
 
 
 ![trapezoid](https://github.com/donadol/analisis_numerico_1826/blob/master/Talleres%20y%20Tareas/trapezoid.png)
