@@ -18,7 +18,6 @@ consideramos la partición de este intervalo P=  {[x0, x1), [x1, x2), ... [xn-1,
 ## Solución e implementación en R:
 ### Área entre las dos curvas
 ```r
-
 f<-function(x){
   #x^3-9*x
   return(sin(x))
@@ -66,9 +65,9 @@ graficarFcn<-function(inicio, final, pasos){
 ```
 
 
-A continuación, las salidas obtenidas con el intervalo [-pi/2, pi/2] usando diez particiones:
+A continuación, las salidas obtenidas con el intervalo [0, pi/2] usando diez particiones:
 
-#### Con trapezoid(0, pi/2, 10):
+#### Con trapezoid(0, pi/2, 10):  
 |x(i-1)   | x(i)      | f(x(i-1))  | f(x(i))  | g(x(i-1))  | g(x(i))  | Área|
 | ------------ | ------------ | ------------ | ------------ | ------------ | ------------ | ------------ |
 |0.00000000  |  0.15707963  |  0.00000000  |  0.15643447  |  1.00000000  |  0.98768834  |  0.14382634 |
@@ -83,4 +82,82 @@ A continuación, las salidas obtenidas con el intervalo [-pi/2, pi/2] usando die
 |1.41371669  |  1.57079633  |  0.98768834  |  1.00000000  |  0.15643447  |  0.00000000  |  0.14382634  |
 
 
-![trapezoid](https://github.com/donadol/analisis_numerico_1826/blob/master/Talleres%20y%20Tareas/trapezoid.png)
+![trapezoid](https://github.com/donadol/analisis_numerico_1826/blob/master/Talleres%20y%20Tareas/trapezoid1.png)  
+
+### Área bajo las dos curvas
+```r
+options (digits=8)
+f<-function(x){
+  #x^3-9*x
+  if (cos(x)<sin(x)){
+    return(cos(x))
+  }
+  else{
+    return (sin(x))
+  }
+}
+
+error<-function (valorAprox){
+  real=integrate (function (x) sin(x)-cos(x), 0, pi/4)
+  error = abs(real$value-valorAprox)
+  return (error)
+}
+
+g<-function(x){
+  #9-x^2
+  return(0*x)
+}
+
+trapezoid<-function(inicio, final, particiones){
+  graficarFcn()
+  h=(final-inicio)/particiones
+  x=seq(inicio, final, length=particiones+1)
+  sum=0
+  cat(" x(i-1) | x(i)     | f(x(i-1)) | f(x(i))   | g(x(i-1))| g(x(i))  | Área\n")
+  for(i in 2:length(x)){
+    if(abs(f(x[i-1]))>abs(g(x[i-1]))){
+      b1=abs(f(x[i-1]))-abs(g(x[i-1]))
+    }
+    else{
+      b1=-abs(f(x[i-1]))+abs(g(x[i-1]))
+    }
+    if(abs(f(x[i]))>abs(g(x[i]))){
+      b2=abs(f(x[i]))-abs(g(x[i]))
+    }
+    else{
+      b2=-abs(f(x[i]))+abs(g(x[i]))
+    }
+    A=h/2*(b1+b2)
+    sum=sum+A
+    segments(x[i-1], f(x[i-1]), x[i-1], g(x[i-1]))
+    segments(x[i], f(x[i]), x[i], g(x[i]))
+    segments(x[i-1], f(x[i-1]), x[i], f(x[i]))
+    segments(x[i-1], g(x[i-1]), x[i], g(x[i]))
+    cat(format(round(x[i-1],4),nsmall=4), " | ", format(round(x[i],4),nsmall=4), " | ", format(round(f(x[i-1]),4),nsmall=4), " | ", format(round(f(x[i]),4),nsmall=4)," | ", format(round(g(x[i-1]),4),nsmall=4), " | ", format(round(g(x[i]),4),nsmall=4), " | ", format(round(A,4),nsmall=4), "\n")
+  }
+  cat("El área es ", sum, " con un error de: ", error (sum))
+} 
+graficarFcn<-function(){
+  x<-seq(-4, 4, .1)
+  plot(x, f(x), col="blue",type = "l")
+  lines(x, sin(x), col="red",type = "l")
+  lines(x, g(x), col="black", type = "l")
+}
+
+trapezoid(0, pi/2, 4)
+```
+#### Con trapezoid(0, pi/2, 10):  
+|x(i-1)   | x(i)      | f(x(i-1))  | f(x(i))  | Área|
+| ------------ | ------------ | ------------ | ------------ | ------------ | 
+|0.0000  |  0.1571  |  0.0000  |  0.1564  |  0.0123 |
+|0.1571  |  0.3142  |  0.1564  |  0.3090  |  0.0366 |
+|0.3142  |  0.4712  |  0.3090  |  0.4540  |  0.0599 |
+|0.4712  |  0.6283  |  0.4540  |  0.5878  |  0.0818 |
+|0.6283  |  0.7854  |  0.5878  |  0.7071  |  0.1017 |
+|0.7854  |  0.9425  |  0.7071  |  0.5878  |  0.1017 |
+|0.9425  |  1.0996  |  0.5878  |  0.4540  |  0.0818 |
+|1.0996  |  1.2566  |  0.4540  |  0.3090  |  0.0599 |
+|1.2566  |  1.4137  |  0.3090  |  0.1564  |  0.0366 |
+|1.4137  |  1.5708  |  0.1564  |  0.0000  |  0.0123 |
+
+![trapezoid](https://github.com/donadol/analisis_numerico_1826/blob/master/Talleres%20y%20Tareas/trapezoid3.png)  
