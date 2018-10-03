@@ -11,7 +11,7 @@ Encontrar una aproximación del área entre dos curva en un intervalo dado usand
 En matemáticas, la regla del trapecio es un método para calcular aproximadamente el valor de una integral definida mediante una suma finita. 
 La regla se basa en aproximar el valor de la integral de f(x) por el de la función lineal, que pasa a través de los puntos (a, f(a)) y (b, f(b)).  
 Sea f(x) y g(x) funciones continuas en [a, b], y sea un conjunto finito de puntos {x0, x1, x2,...xn} tales que a= x0<x1<x2...<xn = b.
-consideramos la partición de este intervalo P=  {[x0, x1), [x1, x2), ... [xn-1, xn]}.
+consideramos la partición de este intervalo P=  {[x0, x1), [x1, x2), ... [xn-1, xn]}.  
 Entonces la aproximación por medio de la regla de trapecios es:  
 ![ecuacion](https://latex.codecogs.com/gif.latex?\int_{a}^{b}&space;f(x)&space;\approx&space;\frac{\Delta&space;x}{2}(\sum_{k=1}^{N}&space;({f(x_{k-1})&plus;f(x_k)})))  
 
