@@ -160,4 +160,4 @@ trapezoid(0, pi/2, 4)
 |1.2566  |  1.4137  |  0.3090  |  0.1564  |  0.0366 |
 |1.4137  |  1.5708  |  0.1564  |  0.0000  |  0.0123 |
 
-![trapezoid](https://github.com/donadol/analisis_numerico_1826/blob/master/Talleres%20y%20Tareas/trapezoid3.png)  
+![trapezoid](https://github.com/donadol/analisis_numerico_1826/blob/master/Talleres%20y%20Tareas/Integration_methods/trapezoid3.png)  
