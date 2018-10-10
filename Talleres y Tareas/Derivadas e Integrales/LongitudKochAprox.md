@@ -9,8 +9,8 @@ Encontrar una aproximación de la longitud de una curva de Koch con un número d
 
 Para la creación de la curva de Koch se utilizó la función koch del paquete alphahull, la cual recibe como parametros side y niter, 
 que son la longitud del triangulo equilatero inicial y el número de iteraciones para el copo de nieve, respectivamente. 
-Dicha función retorna una matriz de 2 columnas con las coordenadas de los vertices de la curva. 
-Para el cálculo de la longitud total de la curva, se acumuló la longitud de segmentos formados entre pares de puntos de la curva de Koch. 
+Dicha función retorna una matriz de 2 columnas con las coordenadas de los vertices de la curva.  
+Para el cálculo de la longitud total de la curva, se acumuló la longitud de segmentos formados entre pares de puntos de la curva de Koch.  
 Recordando, la formula de la distancia es:  
 
 ![formulaDistancia](http://www.matematicatuya.com/GRAFICAecuaciones/ImS1a1.png)  
