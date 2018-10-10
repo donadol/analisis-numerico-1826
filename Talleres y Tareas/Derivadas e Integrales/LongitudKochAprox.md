@@ -16,7 +16,7 @@ Recordando, la formula de la distancia es:
 ![formulaDistancia](http://www.matematicatuya.com/GRAFICAecuaciones/ImS1a1.png)  
 
 Para el cálculo del error, se utilizó la ecuación de longitud de perimetro de la curva de Koch, la cual es:  
-![ecuacion](https://latex.codecogs.com/gif.latex?3*(\frac{4}{3})^{n})  
+![ecuacion](https://latex.codecogs.com/gif.latex?L_{n}=3*(\frac{4}{3})^{n})  
 Donde n es el número de iteracciones.  
 
 ## Solución e implementación en R:
@@ -24,7 +24,7 @@ Donde n es el número de iteracciones.
 Se creó la función longitudCurva que recibe el número de iteraciones para la curva de Koch.
 
 ```r
-#Longitud de curva de la curva de Koch
+#Longitud de la curva de Koch
 #Usando 8 decimales de presición
 #Elaborado por Laura Donado y Jhonny Parra
 #2018
