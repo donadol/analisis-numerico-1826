@@ -5,8 +5,9 @@
 # Cómo calcular el error: cómo encontrar la solución de forma analitica
 
 
-
+install.packages("phaseR")
 library(phaseR)
+
 
 f<-function(fcn,x,y){
   return(eval(fcn))
@@ -62,7 +63,7 @@ rk3<-function(fcn, ti, tf, y0, h, graficar=TRUE, numpendientes=10){
     k1=h*f(fcn, t[i-1], y[i-1])
     k2=h*f(fcn, t[i-1]+h/2, y[i-1]+k1*(0.5))
     k3=h*f(fcn, t[i-1]+h, y[i-1]-k1+2*k2)
-    y<-c(y, y[i-1]+1/6*(k1+4*k2+2*k3))
+    y<-c(y, y[i-1]+1/6*(k1+4*k2+k3))
   }
   if (graficar){
     graficarCampoPendiente(min(t), max(t), min(y), max(y), fcn, numpendientes, "RK3")
