@@ -81,7 +81,7 @@ Gráfica:
   
 3. Obtenga 20 puntos de la solución de la ecuación, utilizando el método de Euler (los
 tres primeros términos)con h=0.1
-![ecuacion](https://latex.codecogs.com/gif.latex?\frac{dy}{dx}-(x&plus;y)=1-x^{2};&space;y(0)=1))  
+![ecuacion](https://latex.codecogs.com/gif.latex?\frac{dy}{dx}-(x&plus;y)=1-x^{2};&space;y(0)=1)  
 Grafique su solución y compare con la solución exacta, cuál es el error de truncamiento
 en cada paso  
 ```r
