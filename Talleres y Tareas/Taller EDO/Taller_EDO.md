@@ -163,4 +163,45 @@ rk3(expression(1-x^2+(x+y)), 0, 2, 1,0.1)
 | 2.0       | 13.3879814       | 9.3916166e-04       |
   
 Gráfica:  
-![imagen](https://github.com/donadol/analisis_numerico_1826/blob/master/Talleres%20y%20Tareas/Taller%20EDO/rk3.png?raw=true)
+![imagen](https://github.com/donadol/analisis_numerico_1826/blob/master/Talleres%20y%20Tareas/Taller%20EDO/rk3.png?raw=true)  
+  
+4. Implemente en R el siguiente algoritmo y aplíquelo para resolver la ecuación anterior  
+![imagen](https://github.com/donadol/analisis_numerico_1826/blob/master/Talleres%20y%20Tareas/Taller%20EDO/codigo4.png?raw=true)  
+```r
+f<-function(x,y){1-x^2+(x+y)}
+x<-c(0)
+y<-c(1)
+h<-0.1
+m=20
+for(i in 1:m){
+  k1<-h*f(x[i],y[i])
+  k2<-h*f(x[i]+h,y[i]+k1)
+  y<-c(y,y[i]+(k1+k2)/2)
+  x<-c(x,x[i]+h)
+  cat("|",x[i],"|",y[i],"|\n")
+}
+```
+
+|x     | y       |
+| ------------ | ------------ |
+| 0 | 1 |
+| 0.1 | 1.2145 |
+| 0.2 | 1.4599725 |
+| 0.3 | 1.7375696 |
+| 0.4 | 2.0485644 |
+| 0.5 | 2.3943637 |
+| 0.6 | 2.7765219 |
+| 0.7 | 3.1967567 |
+| 0.8 | 3.6569661 |
+| 0.9 | 4.1592476 |
+| 1 | 4.7059186 |
+| 1.1 | 5.29954 |
+| 1.2 | 5.9429417 |
+| 1.3 | 6.6392506 |
+| 1.4 | 7.3919219 |
+| 1.5 | 8.2047737 |
+| 1.6 | 9.0820249 |
+| 1.7 | 10.028338 |
+| 1.8 | 11.048863 |
+| 1.9 | 12.149294 |
+| 2 | 13.335919 |
