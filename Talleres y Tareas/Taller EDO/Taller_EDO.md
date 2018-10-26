@@ -5,6 +5,7 @@
 1. Considere un cuerpo con temperatura interna 𝑇 el cual se encuentra en un ambiente con temperatura constante 𝑇𝑒. Suponga que su masa 𝑚 concentrada en un solo punto. Entonces la transferencia de calor entre el cuerpo y el entorno externo puede
 ser descrita con la ley de Stefan-Boltzmann:
 
+
 ![imagen](https://latex.codecogs.com/png.latex?%5Cbg_white%20v%5Cleft%28t%5Cright%29%5C%3A%3D%5C%3A%5Cepsilon%20%5Cgamma%20S%5Cleft%28T%5E4%5Cleft%28t%5Cright%29-Te%5E4%5Cright%29)
 
 
@@ -14,7 +15,9 @@ Solución:
 Con y=0.5
 
 Codigo en R:
-´´´ R
+
+
+```r
 
 euler <- function(f, x0, y0, h, n) {
   x <- x0
@@ -44,7 +47,8 @@ graficarSolucionNumerica<-function (x, y){
     segments(x[i-1], y[i-1], x[i], y[i], col="red")
   }
 }
-´´´
+```
+
 
 |x     | y       | 
 | ------------ | ------------ | 
