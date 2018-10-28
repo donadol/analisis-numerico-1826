@@ -102,7 +102,7 @@ rk3<-function(dy, ti, tf, y0, h, graficar=TRUE, numpendientes=10){
     error<-c(error,errorTruncamiento(t[i-1],y[i-1]))
   }
   if (graficar){
-    graficarCampoPendiente(min(t), max(t), min(y), max(y), dy, numpendientes, "RK3")
+    graficarCampoPendiente(min(t), max(t), min(y), max(y), dy, numpendientes, "Punto 3")
     graficarSolucionNumerica(t, y)
   }
   return(data.frame(x=t, y=y, "Error de truncamiento"=error))
@@ -136,12 +136,14 @@ rk3(expression(1-x^2+(x+y)), 0, 2, 1,0.1)
 
 Implemente en R el siguiente algoritmo y aplíquelo para resolver la ecuación anterior
 
-![Algoritmo punto 4 (RK2)](Imagenes/codigo4.png)
-
+```{r echo=FALSE, out.width='100%'}
+knitr::include_graphics('./Imagenes/codigo4.png')
+```
 
 ### Solución:
 
 ```{r, punto4}
+options (digits=8)
 f<-function(x,y){1-x^2+(x+y)}
 x<-c(0)
 y<-c(1)
@@ -156,6 +158,74 @@ for(i in 1:m){
 data.frame (x=x, y=y)
 ```
 
+## Punto 5
+
+Utilizar la siguiente variación en el método de Euler, para resolver una ecuación diferencial
+ordinaria de primer orden, la cual calcula el promedio de las pendientes en cada paso
+
+
+\begin{center}
+$$y_{i+1}=y_i+\frac{h}{2}\left(f\left(x_i,\:y_i\right)+f\left(x_{i+1},\:y_{i+1}\right)\right)$$
+\end{center}
+
+Implemente un código en R, para este método y obtenga 10 puntos de la solución con h=0.1,
+grafíquela y compárela con el método de Euler:
+
+\begin{center}
+$\frac{dy}{dx}-x-y-1+x^2\:=\:0;\:y\left(0\right)\:=\:1$
+\end{center}
+
+### Solución:
+
+```{r, punto5}
+options (digits=8)
+list.of.packages <- c("phaseR")
+new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
+if(length(new.packages)) install.packages(new.packages)
+
+library(phaseR)
+
+f<-function(fcn,x,y){
+  return(eval(fcn))
+}
+
+obtenerErrorAbsoluto<-function(x,y){
+  solucion=exp(x)*(x^2*exp(-x) + x*exp(-x) + 1)
+  return(abs(y-solucion))
+}
+
+graficarSolucionNumerica<-function (x, y, colorPuntos="blue", colorLineas="red"){
+  points (x, y, pch=20, col=colorPuntos)
+  for (i in 2:length(x)){
+    segments(x[i-1], y[i-1], x[i], y[i], col=colorLineas)
+  }
+}
+
+variacionEuler<-function(dy, ti, tf, y0, h, graficar=TRUE, numpendientes=10){
+  t<-seq(ti, tf, h)
+  y_euler<-c(y0)
+  y_eulerv<-c(y0)
+  error_euler<-c(0)
+  error_eulerv<-c(0)
+  for(i in 2:length(t)){
+    y_euler<-c(y_euler, y_euler[i-1] + h * f(dy, t[i-1], y_euler[i-1]))
+    
+    y_eulerv<-c(y_eulerv, y_eulerv[i-1]+h*0.5*(f(dy, t[i-1], y_eulerv[i-1]) + f(dy, t[i], y_euler[i])))
+    
+    error_euler<-c(error_euler, obtenerErrorAbsoluto(t[i], y_euler[i]))
+    error_eulerv<-c(error_eulerv, obtenerErrorAbsoluto(t[i], y_eulerv[i]))
+    
+  }
+  if (graficar){
+    graficarCampoPendiente(min(t), max(t), min(y), max(y), dy, numpendientes, "Euler y Euler variado")
+    graficarSolucionNumerica(t, y_euler)
+    graficarSolucionNumerica(t, y_eulerv, "orange", "green")
+  }
+  return (data.frame(x=t, y_euler=y_euler, y_eulervariado=y_eulerv, error_euler=error_euler, error_eulervariado=error_eulerv))
+}
+
+variacionEuler(expression(x+y+1-x^2), 0, 1, 1, 0.1)
+```
 
 ## Punto 7
 
@@ -168,6 +238,7 @@ $\frac{dy}{dx}-x-y-1+x^2\:=\:0;\:y\left(0\right)\:=\:1$
 ### Solución:
 
 ```{r, punto7}
+options (digits=7)
 list.of.packages <- c("phaseR")
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
 if(length(new.packages)) install.packages(new.packages)
@@ -178,9 +249,8 @@ f<-function(fcn,x,y){
   return(eval(fcn))
 }
 
-# Solo para prueba con dy=x+y, y(0)=1
 obtenerErrorAbsoluto<-function(x,y){
-  solucion=exp(x)*((-x*exp(-x))-exp(-x)+2)
+  solucion=exp(x)*(x^2*exp(-x) + x*exp(-x) + 1)
   return(abs(y-solucion))
 }
 
@@ -210,8 +280,11 @@ rk3_4yeuler<-function(dy, ti, tf, y0, h, graficar=TRUE, numpendientes=10){
   y_rk3<-c(y0)
   y_rk4<-c(y0)
   y_euler<-c(y0)
-  difrk3<-c(0)
-  difrk4<-c(0)
+  
+  error_euler<-c(0)
+  error_rk3<-c(0)
+  error_rk4<-c(0)
+  
   for(i in 2:length(t)){
     y_euler<-c(y_euler, y_euler[i-1] + h * f(dy, t[i-1], y_euler[i-1]))
     
@@ -229,8 +302,9 @@ rk3_4yeuler<-function(dy, ti, tf, y0, h, graficar=TRUE, numpendientes=10){
     
     
     
-    difrk3<-c(difrk3, abs(y_euler[i]-y_rk3[i]))
-    difrk4<-c(difrk4, abs(y_euler[i]-y_rk4[i]))
+    error_euler<-c(error_euler, obtenerErrorAbsoluto(t[i], y_euler[i]))
+    error_rk3<-c(error_rk3, obtenerErrorAbsoluto(t[i], y_rk3[i]))
+    error_rk4<-c(error_rk4, obtenerErrorAbsoluto(t[i], y_rk4[i]))
   }
   if (graficar){
     graficarCampoPendiente(min(t), max(t), min(y), max(y), dy, numpendientes, "Comparación Euler y RK3, RK4")
@@ -238,8 +312,8 @@ rk3_4yeuler<-function(dy, ti, tf, y0, h, graficar=TRUE, numpendientes=10){
     graficarSolucionNumerica(t, y_rk3, "orange", "purple")
     graficarSolucionNumerica(t, y_euler, "yellow", "green")
   }
-  rta<-list(x=t, y_euler=y_euler, y_rk3=y_rk3, y_rk4=y_rk4, difrk3=difrk3, difrk4=difrk4)
+  return(data.frame(x=t, y_euler=y_euler, y_RK3=y_rk3, y_RK4=y_rk4, error_Euler=error_euler, error_RK3=error_rk3, error_RK4=error_rk4))
 }
-r<-rk3_4yeuler(expression(x+y+1-x^2), 0, 1, 1, 0.1)
-data.frame (x=r$x, y_euler=r$y_euler, y_rk3=r$y_rk3, y_rk4=r$y_rk4, "Dif_RK3_Euler"=r$difrk3, "Dif_RK4_Euler"=r$difrk4)
+
+rk3_4yeuler(expression(x+y+1-x^2), 0, 1, 1, 0.1)
 ```
