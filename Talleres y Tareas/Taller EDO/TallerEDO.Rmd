@@ -205,29 +205,41 @@ graficarSolucionNumerica<-function (x, y, colorPuntos="blue", colorLineas="red")
   }
 }
 
-rk4yeuler<-function(dy, ti, tf, y0, h, graficar=TRUE, numpendientes=10){
+rk3_4yeuler<-function(dy, ti, tf, y0, h, graficar=TRUE, numpendientes=10){
   t<-seq(ti, tf, h)
-  y<-c(y0)
+  y_rk3<-c(y0)
+  y_rk4<-c(y0)
   y_euler<-c(y0)
-  dif<-c(0)
+  difrk3<-c(0)
+  difrk4<-c(0)
   for(i in 2:length(t)){
-    y_euler<-c(y_euler, y[i-1] + h * f(dy, t[i-1], y[i-1]))
+    y_euler<-c(y_euler, y_euler[i-1] + h * f(dy, t[i-1], y_euler[i-1]))
     
-    k1=h*f(dy, t[i-1], y[i-1])
-    k2=h*f(dy, t[i-1]+h/2, y[i-1]+k1*(0.5))
-    k3=h*f(dy, t[i-1]+h/2, y[i-1]+k2*(0.5))
-    k4=h*f(dy, t[i-1]+h, y[i-1]+k3)
-    y<-c(y, y[i-1]+1/6*(k1+2*k2+2*k3+k4))
+    k1=h*f(dy, t[i-1], y_rk3[i-1])
+    k2=h*f(dy, t[i-1]+h/2, y_rk3[i-1]+k1*(0.5))
+    k3=h*f(dy, t[i-1]+h, y_rk3[i-1]-k1+2*k2)
+    y_rk3<-c(y_rk3, y[i-1]+1/6*(k1+4*k2+k3))
     
-    dif<-c(dif, abs(y_euler[i]-y[i]))
+    
+    k1=h*f(dy, t[i-1], y_rk4[i-1])
+    k2=h*f(dy, t[i-1]+h/2, y_rk4[i-1]+k1*(0.5))
+    k3=h*f(dy, t[i-1]+h/2, y_rk4[i-1]+k2*(0.5))
+    k4=h*f(dy, t[i-1]+h, y_rk4[i-1]+k3)
+    y_rk4<-c(y_rk4, y_rk4[i-1]+1/6*(k1+2*k2+2*k3+k4))
+    
+    
+    
+    difrk3<-c(difrk3, abs(y_euler[i]-y_rk3[i]))
+    difrk4<-c(difrk4, abs(y_euler[i]-y_rk4[i]))
   }
   if (graficar){
-    graficarCampoPendiente(min(t), max(t), min(y), max(y), dy, numpendientes, "RK4")
-    graficarSolucionNumerica(t, y)
+    graficarCampoPendiente(min(t), max(t), min(y), max(y), dy, numpendientes, "Comparación Euler y RK3, RK4")
+    graficarSolucionNumerica(t, y_rk4)
+    graficarSolucionNumerica(t, y_rk3, "orange", "purple")
     graficarSolucionNumerica(t, y_euler, "yellow", "green")
   }
-  rta<-list(x=t, y_euler=y_euler, y_rk4=y, dif=dif)
+  rta<-list(x=t, y_euler=y_euler, y_rk3=y_rk3, y_rk4=y_rk4, difrk3=difrk3, difrk4=difrk4)
 }
-r<-rk4yeuler(expression(x+y+1-x^2), 0, 1, 1, 0.1)
-data.frame (x=r$x, y_euler=r$y_euler, y_rk4=r$y_rk4, "Diferencia abs"=r$dif)
+r<-rk3_4yeuler(expression(x+y+1-x^2), 0, 1, 1, 0.1)
+data.frame (x=r$x, y_euler=r$y_euler, y_rk3=r$y_rk3, y_rk4=r$y_rk4, "Dif_RK3_Euler"=r$difrk3, "Dif_RK4_Euler"=r$difrk4)
 ```
