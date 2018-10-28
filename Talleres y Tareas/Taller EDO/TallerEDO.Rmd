@@ -102,7 +102,7 @@ rk3<-function(dy, ti, tf, y0, h, graficar=TRUE, numpendientes=10){
     error<-c(error,errorTruncamiento(t[i-1],y[i-1]))
   }
   if (graficar){
-    graficarCampoPendiente(min(t), max(t), min(y), max(y), dy, numpendientes, "Punto 3")
+    graficarCampoPendiente(min(t), max(t), min(y), max(y), dy, numpendientes, "RK3")
     graficarSolucionNumerica(t, y)
   }
   return(data.frame(x=t, y=y, "Error de truncamiento"=error))
@@ -227,6 +227,8 @@ variacionEuler<-function(dy, ti, tf, y0, h, graficar=TRUE, numpendientes=10){
 variacionEuler(expression(x+y+1-x^2), 0, 1, 1, 0.1)
 ```
 
+La variación al método de Euler produce una reducción en el error de truncamiento con respecto al método de Euler original.
+
 ## Punto 7
 
 Pruebe el siguiente código en R del método de Runge Kutta de tercer y cuarto orden y obtenga 10 puntos de la solución con h=0.1, grafíquela y compárela con el método de Euler:
@@ -317,3 +319,5 @@ rk3_4yeuler<-function(dy, ti, tf, y0, h, graficar=TRUE, numpendientes=10){
 
 rk3_4yeuler(expression(x+y+1-x^2), 0, 1, 1, 0.1)
 ```
+
+Los errores se ordenan de mayor a menor, teniendo Euler el mayor error de truncamiento y RK4 el menor error de truncamiento con respecto a la solución analítica.
