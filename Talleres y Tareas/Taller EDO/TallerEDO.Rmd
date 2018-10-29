@@ -4,39 +4,37 @@ author: "Laura Donado y Jhonny Parra"
 date: "27 de octubre de 2018"
 output: pdf_document
 ---
-
+  
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
-
 ## Punto 1
 
 Considere un cuerpo con temperatura interna $T$ cual se encuentra en un ambiente con  temperatura constante $T_e$.  Suponga  que  su  masa $m$ concentrada  en  un  solo punto. Entonces la transferencia de calor entre el cuerpo y el entorno externo puede ser descrita con la ley de Stefan-Boltzmann:
-
-$$v\left(t\right)\:=\:\epsilon \gamma S\left(T^4\left(t\right)-T_e^4\right)$$
-
-Donde $t$ es tiempo y $\epsilon$ es la constante de Boltzmann ($\:\epsilon \:=\:5.6x10^{-8}J/m^{2}K^{2}s$), $\gamma$ es la constante de "emisividad" del cuerpo, $S$ el área de la superficie y $v$ es la tasa de transferencia dle calor. La tasa de variación de la energía $\frac{dT}{dt}=-\frac{v\left(t\right)}{mC}$ ($C$ indica el calor específico del material que constituye el cuerpo). En consecuencia,
+  
+  $$v\left(t\right)\:=\:\epsilon \gamma S\left(T^4\left(t\right)-T_e^4\right)$$
+  
+  Donde $t$ es tiempo y $\epsilon$ es la constante de Boltzmann ($\:\epsilon \:=\:5.6x10^{-8}J/m^{2}K^{2}s$), $\gamma$ es la constante de "emisividad" del cuerpo, $S$ el área de la superficie y $v$ es la tasa de transferencia dle calor. La tasa de variación de la energía $\frac{dT}{dt}=-\frac{v\left(t\right)}{mC}$ ($C$ indica el calor específico del material que constituye el cuerpo). En consecuencia,
 
 \begin{center}
 $$\frac{dT}{dt}=\frac{\epsilon \gamma S\left(T^4\left(t\right)-T_e^4\right)}{mC}$$
-\end{center}
+  \end{center}
 Usando el método de Euler (en R) y 20 intervalos iguales y t variando de 0 a 200 segundos, resuelva numéricamente la ecuación, si el cuerpo es un cubo de lados de longitud 1m y masa igual a 1Kg. Asuma, que T0 = 180K, Te = 200K, g = 0.5 y C = 100J/(Kg/K). Hacer una representación gráfica del resultado.
 
 ### Solución:
 
 Usando $\gamma =0.5$
-
-
-```{r, punto1}
+  
+  
+  ```{r, punto1}
 graficarSolucionNumerica<-function (x, y){
   plot(x,y, pch=20, col = "blue", xlab="X", ylab="Y", main="Euler")
   for (i in 2:length(x)){
     segments(x[i-1], y[i-1], x[i], y[i], col="red")
   }
 }
-
 euler <- function(f, x0, y0, h, n) {
   x <- x0
   y <- y0
@@ -51,28 +49,103 @@ euler <- function(f, x0, y0, h, n) {
   graficarSolucionNumerica(x, y)
   return(data.frame(x = x, y = y))
 }
-
 euler (function(t,T){-1.68*10^(-9) * T^4 + 2.6880 }, 0, 180, 10, 20)
 ```
 
 
 ## Punto 2
 
-Obtenga cinco puntos de la solución de la ecuación, utilizando el método de Taylor (los tres primeros términos)con h=0.1 implemente en R
+Obtenga cinco puntos de la solución de la ecuación, utilizando el método de Taylor (los tres primeros términos) con h=0.1 implemente en R
 
 \begin{center}
 $$\frac{dy}{dx}-\left(x+y\right)=1-x^2;\:y\left(0\right)\:=\:1$$
-\end{center}
+  \end{center}
 
 Grafique su solución y compare con la solución exacta, cuál es el error de truncamiento en cada paso.
 
+Primero, se sabe que el método de Taylor de orden n esta definido de la siguiente manera:
+\begin{center}
+$$y_{i+1}=y_i+hT_{n}\left(t_i,\:y_i\right), i\:=\:0,1,2,...N-1$$
+  \end{center}
+Donde:
+\begin{center}
+$$T_{1}\left(t,\:y\left(t\right)\right)\:=f\left(t,y\left(t\right)\right)$$
+$$T_{n}\left(t,\:y\left(t\right)\right)\:=\:T_{n-1}\left(t,\:y\left(t\right)\right)+\frac{f^{\left(n-1\right)}\left(t,y\left(t\right)\right)}{n!}h^{n-1}$$
+  \end{center}
+
+Por lo anterior tenemos que:
+\begin{center}
+$$T_2\left(t_i,\:y_i\right)=f\left(t_i,\:y_i\right)+\frac{f'\:\left(t_i,\:y_i\right)}{2!}h$$
+$$T_3\left(t_i,\:y_i\right)=T_2\left(t_i,\:y_i\right)+\frac{f\:''\:\left(t_i,\:y_i\right)}{3!}h^2$$
+$$f\left(t,\:y\left(x\right)\right)=1-x^2+x+y$$
+$$f'\left(t,\:y\left(x\right)\right)=2-x+y-x^2$$
+$$f''\left(t,\:y\left(x\right)\right)=y-x^2-x$$
+$$y_{i+1}=y_i+h\left(f\left(x_i,\:y_i\right)+\frac{h}{2}\left(f'\left(x_i,\:y_i\right)\right)+\frac{h^2}{6}\left(f''\left(x_i,\:y_i\right)\right)\right)$$
+  \end{center}
+  
+Con lo anterior, se realizó el siguiente código
+
+### Solución:
+
+```{r, punto2}
+options (digits=8)
+library(phaseR)
+f<-function(fcn,x,y){
+  return(eval(fcn))
+}
+yprima<-function(x,y){
+  return(1-x^2+x+y)
+}
+yprima1<-function(x,y){
+  return(2-x+y-x^2)
+}
+yprima2<-function(x,y){
+  return(y-x^2-x)
+}
+errorTruncamiento<-function(x,y){
+  sol=x^2+x+exp(x)
+  return(abs(y-sol))
+}
+taylor<-function(dy,x0, y0, h, n){
+  x<-seq(from=x0, by=h, length.out = n+1)
+  y<-c(y0)
+  error<-c(errorTruncamiento(x0,y0))
+  for(i in 2:length(x)){
+    y<-c(y, y[i-1]+h*(yprima(x[i-1],y[i-1])+h/2*(yprima1(x[i-1],y[i-1]))+(h^2)/6*(yprima2(x[i-1],y[i-1]))))
+    error<-c(error,errorTruncamiento(x[i-1],y[i-1]))
+  }
+  graficarCampoPendiente(min(x), max(x), min(y), max(y), dy, n, "Método de Taylor orden 3")
+  graficarSolucionNumerica(x, y)
+  return(data.frame(x=x, y=y, "Error de truncamiento"=error))
+}
+graficarCampoPendiente<-function(x0, xn, y0, yn, fcn, numpendientes, metodo){
+  apma1 <- function(t, y, parameters){
+    a <- parameters[1] 
+    dy <- a*(f(fcn, t, y))
+    list(dy)
+  } 
+  apma1.flowField <- flowField(apma1, x = c(x0, xn), 
+                               y   = c(y0, yn), parameters = c(1), 
+                               points = numpendientes, system = "one.dim", 
+                               add = FALSE, xlab = "x", ylab = "y", 
+                               main = metodo)
+  grid()
+}
+graficarSolucionNumerica<-function (x, y){
+  points (x, y, pch=20, col="blue")
+  for (i in 2:length(x)){
+    segments(x[i-1], y[i-1], x[i], y[i], col="red")
+  }
+}
+taylor(expression(1-x^2+(x+y)), 0, 1, 0.1, 5)
+```
 ## Punto 3
 
 Obtenga 20 puntos de la solución de la ecuación, utilizando el método de Euler (los tres primeros términos) con h=0.1
 
 \begin{center}
 $$\frac{dy}{dx}-\left(x+y\right)=1-x^2;\:y\left(0\right)\:=\:1$$
-\end{center}
+  \end{center}
 Grafique su solución y compare con la solución exacta, cuál es el error de truncamiento
 en cada paso
 
@@ -84,12 +157,10 @@ library(phaseR)
 f<-function(fcn,x,y){
   return(eval(fcn))
 }
-
 errorTruncamiento<-function(x,y){
   sol=x^2+x+exp(x)
   return(abs(y-sol))
 }
-
 rk3<-function(dy, ti, tf, y0, h, graficar=TRUE, numpendientes=10){
   t<-seq(ti, tf, h)
   y<-c(y0)
@@ -107,7 +178,6 @@ rk3<-function(dy, ti, tf, y0, h, graficar=TRUE, numpendientes=10){
   }
   return(data.frame(x=t, y=y, "Error de truncamiento"=error))
 }
-
 graficarCampoPendiente<-function(x0, xn, y0, yn, fcn, numpendientes, metodo){
   apma1 <- function(t, y, parameters){
     a <- parameters[1] 
@@ -121,14 +191,12 @@ graficarCampoPendiente<-function(x0, xn, y0, yn, fcn, numpendientes, metodo){
                                main = metodo)
   grid()
 }
-
 graficarSolucionNumerica<-function (x, y){
   points (x, y, pch=20, col="blue")
   for (i in 2:length(x)){
     segments(x[i-1], y[i-1], x[i], y[i], col="red")
   }
 }
-
 rk3(expression(1-x^2+(x+y)), 0, 2, 1,0.1)
 ```
 
@@ -166,14 +234,14 @@ ordinaria de primer orden, la cual calcula el promedio de las pendientes en cada
 
 \begin{center}
 $$y_{i+1}=y_i+\frac{h}{2}\left(f\left(x_i,\:y_i\right)+f\left(x_{i+1},\:y_{i+1}\right)\right)$$
-\end{center}
+  \end{center}
 
 Implemente un código en R, para este método y obtenga 10 puntos de la solución con h=0.1,
 grafíquela y compárela con el método de Euler:
-
-\begin{center}
+  
+  \begin{center}
 $\frac{dy}{dx}-x-y-1+x^2\:=\:0;\:y\left(0\right)\:=\:1$
-\end{center}
+  \end{center}
 
 ### Solución:
 
@@ -182,25 +250,20 @@ options (digits=8)
 list.of.packages <- c("phaseR")
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
 if(length(new.packages)) install.packages(new.packages)
-
 library(phaseR)
-
 f<-function(fcn,x,y){
   return(eval(fcn))
 }
-
 obtenerErrorAbsoluto<-function(x,y){
   solucion=exp(x)*(x^2*exp(-x) + x*exp(-x) + 1)
   return(abs(y-solucion))
 }
-
 graficarSolucionNumerica<-function (x, y, colorPuntos="blue", colorLineas="red"){
   points (x, y, pch=20, col=colorPuntos)
   for (i in 2:length(x)){
     segments(x[i-1], y[i-1], x[i], y[i], col=colorLineas)
   }
 }
-
 variacionEuler<-function(dy, ti, tf, y0, h, graficar=TRUE, numpendientes=10){
   t<-seq(ti, tf, h)
   y_euler<-c(y0)
@@ -223,7 +286,6 @@ variacionEuler<-function(dy, ti, tf, y0, h, graficar=TRUE, numpendientes=10){
   }
   return (data.frame(x=t, y_euler=y_euler, y_eulervariado=y_eulerv, error_euler=error_euler, error_eulervariado=error_eulerv))
 }
-
 variacionEuler(expression(x+y+1-x^2), 0, 1, 1, 0.1)
 ```
 
@@ -232,10 +294,10 @@ La variación al método de Euler produce una reducción en el error de truncami
 ## Punto 7
 
 Pruebe el siguiente código en R del método de Runge Kutta de tercer y cuarto orden y obtenga 10 puntos de la solución con h=0.1, grafíquela y compárela con el método de Euler:
-
-\begin{center}
+  
+  \begin{center}
 $\frac{dy}{dx}-x-y-1+x^2\:=\:0;\:y\left(0\right)\:=\:1$
-\end{center}
+  \end{center}
 
 ### Solución:
 
@@ -244,18 +306,14 @@ options (digits=7)
 list.of.packages <- c("phaseR")
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
 if(length(new.packages)) install.packages(new.packages)
-
 library(phaseR)
-
 f<-function(fcn,x,y){
   return(eval(fcn))
 }
-
 obtenerErrorAbsoluto<-function(x,y){
   solucion=exp(x)*(x^2*exp(-x) + x*exp(-x) + 1)
   return(abs(y-solucion))
 }
-
 graficarCampoPendiente<-function(x0, xn, y0, yn, fcn, numpendientes, metodo){
   apma1 <- function(t, y, parameters){
     a <- parameters[1] 
@@ -269,14 +327,12 @@ graficarCampoPendiente<-function(x0, xn, y0, yn, fcn, numpendientes, metodo){
                                main = metodo)
   grid()
 }
-
 graficarSolucionNumerica<-function (x, y, colorPuntos="blue", colorLineas="red"){
   points (x, y, pch=20, col=colorPuntos)
   for (i in 2:length(x)){
     segments(x[i-1], y[i-1], x[i], y[i], col=colorLineas)
   }
 }
-
 rk3_4yeuler<-function(dy, ti, tf, y0, h, graficar=TRUE, numpendientes=10){
   t<-seq(ti, tf, h)
   y_rk3<-c(y0)
@@ -316,7 +372,6 @@ rk3_4yeuler<-function(dy, ti, tf, y0, h, graficar=TRUE, numpendientes=10){
   }
   return(data.frame(x=t, y_euler=y_euler, y_RK3=y_rk3, y_RK4=y_rk4, error_Euler=error_euler, error_RK3=error_rk3, error_RK4=error_rk4))
 }
-
 rk3_4yeuler(expression(x+y+1-x^2), 0, 1, 1, 0.1)
 ```
 
