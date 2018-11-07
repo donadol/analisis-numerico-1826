@@ -1,11 +1,7 @@
 #Elaborado por: Laura Donado y Jhonny Parra
 #2018
 
-list.of.packages <- c("pracma")
-new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
-if(length(new.packages)) install.packages(new.packages)
-
-list.of.packages <- c("deSolve")
+list.of.packages <- c("pracma","deSolve")
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
 if(length(new.packages)) install.packages(new.packages)
 
