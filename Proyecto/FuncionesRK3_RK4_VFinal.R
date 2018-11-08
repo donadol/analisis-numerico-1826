@@ -73,6 +73,13 @@ rungekutta3<-function(dy, ti, tf, y0, h, graficar=TRUE, numpendientes=10){
   rta<-list(w=y, t=t, error=error)
 }
 
+
+#Parametros:
+#dy: f(x,y) en una ecuación diferencial de la forma y'=f(x, y)
+#ti: t inicial para la solución
+#tf: t final para la solución
+#h: tamaño del paso
+
 r<-rungekutta4(function(x, y){x-y}, 0, 2, 1, 0.1)
 data.frame (x=r$t, y=r$w, "Error truncamiento"=r$error)
 
