@@ -80,6 +80,11 @@ rungekutta3<-function(dy, ti, tf, y0, h, graficar=TRUE, numpendientes=10){
 #tf: t final para la solución
 #h: tamaño del paso
 
+#Resultados de la función RK3 y RK4:
+# $t: t's de la solución con tamaño de paso h (x)
+# $w: aproximaciones a la solución (y)
+# $error: error de truncamiento 
+
 r<-rungekutta4(function(x, y){x-y}, 0, 2, 1, 0.1)
 data.frame (x=r$t, y=r$w, "Error truncamiento"=r$error)
 
