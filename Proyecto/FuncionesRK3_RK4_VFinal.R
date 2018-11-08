@@ -75,16 +75,18 @@ rungekutta3<-function(dy, ti, tf, y0, h, graficar=TRUE, numpendientes=10){
 
 
 #Parametros:
-#dy: f(x,y) en una ecuación diferencial de la forma y'=f(x, y)
-#ti: t inicial para la solución
-#tf: t final para la solución
-#h: tamaño del paso
+# dy: f(x,y) en una ecuación diferencial de la forma y'=f(x, y)
+# ti: t inicial para la solución
+# tf: t final para la solución
+# y0: valor inicial, es decir y(ti)=y0
+# h: tamaño del paso
 
 #Resultados de la función RK3 y RK4:
 # $t: t's de la solución con tamaño de paso h (x)
 # $w: aproximaciones a la solución (y)
 # $error: error de truncamiento 
 
+#Prueba: solución a la ecuación y'=x-y en el intervalo [0, 2] con y(0)=1 y h=0.1
 r<-rungekutta4(function(x, y){x-y}, 0, 2, 1, 0.1)
 data.frame (x=r$t, y=r$w, "Error truncamiento"=r$error)
 
